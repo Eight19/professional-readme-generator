@@ -1,8 +1,9 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const generateMarkdown = require(".utils/generateMarkdown")
+const inquirer = require('inquirer');
+const fs = require('fs');
+const path = require('path');
+const generateMarkdown = require('.utils/generateMarkdown');
 
-const generateHTML = ({ name, location, github, linkedin }) =>
+const generateHTML = ({ name, location, github, linkedin, title, why, benefits, test, screenshot, knowledge, features, install, contributors, contribute, tutorials }) =>
   `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +35,19 @@ inquirer
       message: 'What is your name?',
     },
     {
+      type: 'checkbox',
+      name: 'license',
+      message: 'Are there any licenses associated with this project (BSD, MIT, APACHE, MPL, GNU, EPL, CDDL, ETC?',
+    },
+    {
       type: 'input',
-      name: 'location',
-      message: 'Where are you from?',
+      name: 'github',
+      message: 'Enter your GitHub Username',
+    },
+    {
+      type: 'input',
+      name: 'linkedin',
+      message: 'Enter your LinkedIn URL.',
     },
     {
       type: 'input',
@@ -55,8 +66,13 @@ inquirer
     },
     {
       type: 'input',
+      name: 'test',
+      message: 'How can users test your application?',
+    },
+    {
+      type: 'input',
       name: 'screenshot',
-      message: 'Add a screenshot by using '
+      message: 'Add a screenshot by using ![alt text](assets/images/screenshot.png)',
     },
     {
       type: 'input',
@@ -75,29 +91,32 @@ inquirer
     },
     {
       type: 'input',
-      name: 'github',
-      message: 'Enter your GitHub Username',
+      name: 'contributors',
+      message: 'Links to GitHub Profiles for all collaborators',
     },
     {
       type: 'input',
-      name: 'linkedin',
-      message: 'Enter your LinkedIn URL.',
+      name: 'contribute',
+      message: 'How can other developers contribute to this project?',
     },
-  ])
-  .then((answers) => {
-    const htmlPageContent = generateHTML(answers);
+    {
+      type: 'input',
+      name: 'tutorials',
+      message: 'Any attributions required for tutorials or third-party assets used?',
+    },
+  ]);
+    //Function to write README.md//
+    function writeFile(fileName, data) {
+      return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+    }
+    
 
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
-    );
-  });
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
+//Function to initialize app//
+function init() {
+  inquirer.prompt[questions].then(responses) => {
+    console.log("Your Professional README.md file is being generated!");
+    writeFile("./Develop/utils/README.md", generateMarkdown({ ...responses }));
+  }
+}
+//Function call to initialize app//
 init();
