@@ -1,33 +1,15 @@
+//Prompts data, creates, and populates README.md//
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown')
+// const { data } = require('./data');
+// const prompt = inquirer.createPromptModule();
+
 const fs = require('fs');
-const path = require('path');
-const generateMarkdown = require('.utils/generateMarkdown');
-
-const generateHTML = ({ name, location, github, linkedin, title, why, benefits, test, screenshot, knowledge, features, install, contributors, contribute, tutorials }) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <header class="p-5 mb-4 header bg-light">
-    <div class="container">
-      <h1 class="display-4">Hi, My name is ${name}</h1>
-      <p class="lead">I am from ${location}.</p>
-      <h3>Example heading <span class="badge bg-secondary">My Contact Information</span></h3>
-      <ul class="list-group">
-        <li class="list-group-item">My GitHub username is ${github}</li>
-        <li class="list-group-item">LinkedIn: ${linkedin}</li>
-      </ul>
-    </div>
-  </header>
-</body>
-</html>`;
-
-inquirer
+//prompt(data)
+    // .then(createMarkdown)
+    // .then(generate)//
+function start() {
+    inquirer
   .prompt([
     {
       type: 'input',
@@ -37,7 +19,8 @@ inquirer
     {
       type: 'checkbox',
       name: 'license',
-      message: 'Are there any licenses associated with this project (BSD, MIT, APACHE, MPL, GNU, EPL, CDDL, ETC?',
+      message: 'Are there any licenses associated with this project',
+      choices: ['BSD', 'MIT', 'APACHE', 'MPL', 'GNU', 'EPL', 'CDDL'],
     },
     {
       type: 'input',
@@ -104,19 +87,22 @@ inquirer
       name: 'tutorials',
       message: 'Any attributions required for tutorials or third-party assets used?',
     },
-  ]);
-    //Function to write README.md//
-    function writeFile(fileName, data) {
-      return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-    }
-    
+   
+  //Function to write README//
 
-//Function to initialize app//
-function init() {
-  inquirer.prompt[questions].then(responses) => {
-    console.log("Your Professional README.md file is being generated!");
-    writeFile("./Develop/utils/README.md", generateMarkdown({ ...responses }));
-  }
+  ]).then((data) => {
+    console.log(data)
+    fs.writeFile('README.md', generateMarkdown(data),
+    error => {
+      if (error) {
+          console.log('Please enter requested information')
+      }
+      console.log('Your Professional README.md has been generated!')
+    }
+  )
+})
 }
-//Function call to initialize app//
-init();
+
+
+
+start()
