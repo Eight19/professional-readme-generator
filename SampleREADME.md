@@ -1,4 +1,6 @@
-# Professional ReadME.md
+# README GENERATOR
+
+
   ## Description
 
   - I want to help the process of creating a README.md simple
@@ -9,7 +11,7 @@
   
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits & collaborators)
+  - [Credits](#credits)
   - [License](#license)
   - [Badges](#badges)
   - [Features](#features)
@@ -19,7 +21,7 @@
   ## Installation
   
   Please answer the following prompts to install this application:
-  - Using the inquirer package
+  - Yes
   
   ## Usage
 
@@ -28,39 +30,41 @@
   ```md
   ![alt text](assets/images/screenshot.png)
   ```
-  
-  ## Credits & Collaborators
-  
+
+  ## Credits
+  - none
+
   List your collaborators, if any, with links to their GitHub profiles.
   If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
   If you followed tutorials, include links to those here as well.
   
- 
+   
   
   ## License
   
-  This project is licensed under . If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+  This project is licensed under APACHE. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
   
   ## Badges
-  
-  Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-  
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-  - undefined
-  
+  ![GitHub license](https://img.shields.io/badge/license-APACHE-blue.svg)
+    
   ## Features
   
   If any project features, list them here.
-  - not at the moment
+  - No
   
   ## How to Contribute
   
   If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-  - ok back now! Ahhh Test!@
+  - absolutely
   
   ## Tests
-  - Just use it :)
-
+  Run the following command to run tests:
+  ```
+  npm test
+  ```
+  - Run it
+  
   ## Questions
-  - You can reach me via email
-
+  
+You can reach me at Eight19@gmail.com with any questions.
+  
