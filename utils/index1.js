@@ -43,7 +43,6 @@ function createMarkdown(data) {
 ## ${licenseBadge}
   
 ## Description
-
 - ${data.why}
 - ${data.benefits}
 - ${data.knowledge}
@@ -77,7 +76,7 @@ If you used any third-party assets that require attribution, list the creators w
 If you followed tutorials, include links to those here as well.
 
 - ${data.credits}
-- ${data.collaborators}
+
 
 ## License
 
@@ -101,9 +100,15 @@ If you created an application or package and would like other developers to cont
 - ${data.contribute}
 
 ## Tests
-- ${data.test}
-`}
+  - ${data.test}
+  Run the following command to run tests:
+ \`\`\`
+  npm test
+  \`\`\`
 
+  ## Questions
+  You can reach me at ${data.questions} with any questions.
+  `;}
 module.exports = {
   generate,
   createMarkdown,

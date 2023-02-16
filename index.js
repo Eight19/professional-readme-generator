@@ -17,10 +17,10 @@ function start() {
       message: 'What is your name?',
     },
     {
-      type: 'checkbox',
+      type: 'list',
       name: 'license',
       message: 'Are there any licenses associated with this project',
-      choices: ['BSD', 'MIT', 'APACHE', 'MPL', 'GNU', 'EPL', 'CDDL'],
+      choices: ['BSD', 'MIT', 'APACHE', 'MPL', 'GNU', 'EPL', 'CDDL', 'NONE'],
     },
     {
       type: 'input',
@@ -52,11 +52,7 @@ function start() {
       name: 'test',
       message: 'How can users test your application?',
     },
-    {
-      type: 'input',
-      name: 'screenshot',
-      message: 'Add a screenshot by using ![alt text](assets/images/screenshot.png)',
-    },
+    
     {
       type: 'input',
       name: 'knowledge',
@@ -86,6 +82,11 @@ function start() {
       type: 'input',
       name: 'tutorials',
       message: 'Any attributions required for tutorials or third-party assets used?',
+    },
+    {
+      type: 'input',
+      name: 'questions',
+      message: 'Any questions?',
     },
    
   //Function to write README//

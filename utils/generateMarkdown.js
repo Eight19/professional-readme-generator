@@ -1,6 +1,11 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (license !== 'NONE') {
+    return `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
+
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
@@ -12,7 +17,8 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `# ${data.title}\n
+
   ## Description
 
   - ${data.why}
@@ -23,11 +29,11 @@ function generateMarkdown(data) {
   
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits & collaborators)
+  - [Credits](#credits)
   - [License](#license)
   - [Badges](#badges)
   - [Features](#features)
-  - [How to Contribute](#how to contribute)
+  - [How to Contribute](#how-to-contribute)
   - [Tests](#tests)
   
   ## Installation
@@ -36,31 +42,29 @@ function generateMarkdown(data) {
   - ${data.install}
   
   ## Usage
-  
-  Add a screenshot of how your application works.
+
+  Provide instructions and examples for use. Include screenshots as needed.
+  To add a screenshot, create an .assets/images folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+  \`\`\`md
   ![alt text](assets/images/screenshot.png)
-  ${data.usage}
-  
-  ## Credits & Collaborators
-  
+  \`\`\`
+
+  ## Credits
+  - ${data.contributors}
+
   List your collaborators, if any, with links to their GitHub profiles.
   If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
   If you followed tutorials, include links to those here as well.
   
-  - ${data.credits}
-  - ${data.collaborators}
+   
   
   ## License
   
   This project is licensed under ${data.license}. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
   
   ## Badges
-  
-  Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-  
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-  - ${data.badges}
-  
+  ${renderLicenseBadge(data.license)}
+    
   ## Features
   
   If any project features, list them here.
@@ -72,8 +76,15 @@ function generateMarkdown(data) {
   - ${data.contribute}
   
   ## Tests
+  Run the following command to run tests:
+  \`\`\`
+  npm test
+  \`\`\`
   - ${data.test}
-`;
-}
+  
+  ## Questions
+  
+You can reach me at ${data.questions} with any questions.
+  `;}
 
 module.exports = generateMarkdown;
